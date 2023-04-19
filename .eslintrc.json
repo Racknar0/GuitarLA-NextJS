@@ -20,7 +20,7 @@
     "rules": {
       "react/react-in-jsx-scope": "off",
       "indent": "off",
-      "semi": [2, "always"],
+      "semi": "off",
       "space-before-function-paren": "off",
       "quotes": "off",
       "camelcase": "warn",
@@ -31,6 +31,8 @@
       "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 2 }],
       "spaced-comment": "off",
       "comma-dangle": "off",
-      "multiline-ternary": "off"
+      "multiline-ternary": "off",
+      "eqeqeq": "off",
+      "react/no-uknown-property": "off"
     }
 }

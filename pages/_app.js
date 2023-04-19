@@ -40,11 +40,9 @@ export default function App({ Component, pageProps }) {
     };
 
     const eliminarProducto = (id) => {
-        /* eslint-disable */
         const carritoActualizado = carrito.filter(
             (producto) => producto.id != id
         );
-        /* eslint-enable */
         setCarrito(carritoActualizado);
         window.localStorage.setItem('carrito', JSON.stringify(carrito));
     };
