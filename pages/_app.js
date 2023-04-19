@@ -1,9 +1,23 @@
 import '@/styles/globals.css';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function App({ Component, pageProps }) {
-    const [carrito, setCarrito] = useState([]);
+    const carritoLS =
+        typeof window !== 'undefined'
+            ? JSON.parse(localStorage.getItem('carrito')) ?? []
+            : [];
+
+    const [carrito, setCarrito] = useState(carritoLS);
+    const [paginaLista, setPaginaLista] = useState(false);
+
+    useEffect(() => {
+        setPaginaLista(true);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }, [carrito]);
 
     const agregarCarrito = (guitarra) => {
         // Comprobar si la guitarra ya esta en el carrito...
@@ -44,7 +58,7 @@ export default function App({ Component, pageProps }) {
         window.localStorage.setItem('carrito', JSON.stringify(carrito));
     };
 
-    return (
+    return paginaLista ? (
         <Component
             {...pageProps}
             agregarCarrito={agregarCarrito}
@@ -53,7 +67,7 @@ export default function App({ Component, pageProps }) {
             carrito={carrito}
             setCarrito={setCarrito}
         />
-    );
+    ) : null;
 }
 
 App.propTypes = {
