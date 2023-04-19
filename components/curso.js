@@ -3,9 +3,10 @@ import styles from '@/styles/curso.module.css';
 
 const Curso = ({ curso }) => {
     const { contenido, imagen, Titulo } = curso;
-
+    /* eslint-disable */
     return (
         <section className={`${styles.curso} curso`}>
+            
             <style jsx>
                 {`
                     .curso {
